@@ -16,6 +16,6 @@ app.get('/', (req, res) =>
     res.sendFile('index.html', {root: 'dist/login-demo/'}),
 );
 
-const port = process.env.API_SERVER_PORT || 8080;
+// const port = process.env.API_SERVER_PORT || 8080;
 
-app.listen(port, () => console.log(`Api started on port ${port}`));
+app.listen(8080, () => console.log(`Api started on port 8080`));
