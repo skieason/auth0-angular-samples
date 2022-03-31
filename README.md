@@ -1,46 +1,74 @@
-# Auth0 Angular Samples
+# Auth0 Angular SDK sample
 
-[![CircleCI](https://circleci.com/gh/auth0-samples/auth0-angular-samples.svg?style=svg)](https://circleci.com/gh/auth0-samples/auth0-angular-samples)
+This sample app demonstrates the integration of the [Auth0 Angular SDK](https://github.com/auth0/auth0-angular) into an Angular application created using the Angular CLI. This sample is a companion to the [Auth0 Angular SDK Quickstart](https://auth0.com/docs/quickstart/spa/angular).
 
-These samples demonstrate how to add authentication to an Angular application with Auth0, using [auth0-angular](https://github.com/auth0/auth0-angular). Each folder contains a distinct application so that various Auth0 features can be viewed in isolation. You can read about these examples in our [Angular Quickstart](https://auth0.com/docs/quickstart/spa/angular).
+This sample demonstrates the following use cases:
 
-Read the [full tutorials on Auth0.com](https://auth0.com/docs/quickstart/spa/angular).
+- Login
+- Log out
+- Showing the user profile
+- Protecting routes using the authentication guard
+- Calling APIs with automatically-attached bearer tokens
 
-## Embedded Integration Samples
+## Configuration
 
-These samples use Auth0's [universal login page](https://auth0.com/docs/hosted-pages/login) which offers the fastest, most secure, and most feature-rich way to add authentication to your app.
+The sample needs to be configured with your Auth0 domain and client ID in order to work. In the root of the sample, copy `auth_config.json.example` and rename it to `auth_config.json`. Open the file and replace the values with those from your Auth0 tenant:
 
-## What is Auth0?
-
-Auth0 helps you to:
-
-- Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, among others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
-- Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
-- Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
-- Support for generating signed [Json Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
-- Analytics of how, when and where users are logging in.
-- Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
-
-## Create a free Auth0 account
-
-1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
-
-### Auth0 Configuration for the Sample Application(s)
-The example application(s) require to be configured with your Auth0 information in order to run succesfully.
-This can be done by renaming `auth_config.json.example` (https://github.com/auth0-samples/auth0-angular-samples/blob/master/Sample-01/auth_config.json.example) to `auth_config.json` and replacing `{DOMAIN}`, `{CLIENT_ID}` and `{API_IDENTIFIER}` with your tenant specific values:
-
-```
+```json
 {
-  "domain": "YOUR_DOMAIN",
-  "clientId": "YOUR_CLIENT_ID",
-  "audience": "YOUR_API_IDENTIFIER",
-  "apiUri": "http://localhost:3001",
-  "appUri": "http://localhost:4200"
+  "domain": "<YOUR AUTH0 DOMAIN>",
+  "clientId": "<YOUR AUTH0 CLIENT ID>",
+  "audience": "<YOUR AUTH0 API AUDIENCE IDENTIFIER>"
 }
 ```
 
-Also ensure the Application in Auth0 is configured to allow **http://localhost:4200** as a `Callback URL`, `Logout URL` and `Allowed Web Origin`.
+## Development server
+
+Run `npm run dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+This will automatically start a Node + Express server as the backend on port `3001`. The Angular application is configured to proxy through to this on any `/api` route.
+
+## Build
+
+Run `npm build` to build the project. The build artifacts will be stored in the `dist/login-demo` directory. Use the `--prod` flag for a production build.
+
+To build and run a production bundle and serve it, run `npm run prod`. The application will run on `http://localhost:3000`.
+
+## Run Using Docker
+
+You can build and run the sample in a Docker container by using the provided scripts:
+
+```bash
+# In Linux / MacOS
+sh exec.sh
+
+# Windows Powershell
+./exec.ps1
+```
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Frequently Asked Questions
+
+We are compiling a list of questions and answers regarding the new JavaScript SDK - if you're having issues running the sample applications, [check the FAQ](https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md)!
+
+# What is Auth0?
+
+Auth0 helps you to:
+
+- Add authentication with [multiple authentication sources](https://auth0.com/docs/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, among others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
+- Add authentication through more traditional **[username/password databases](https://auth0.com/docs/connections/database/custom-db/create-db-connection)**.
+- Add support for **[linking different user accounts](https://auth0.com/docs/users/user-account-linking)** with the same user.
+- Support for generating signed [Json Web Tokens](https://auth0.com/docs/tokens/json-web-tokens) to call your APIs and **flow the user identity** securely.
+- Analytics of how, when and where users are logging in.
+- Pull data from other sources and add it to the user profile, through [JavaScript rules](https://auth0.com/docs/rules).
+
+## Create a Free Auth0 Account
+
+1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
+2. Use Google, GitHub or Microsoft Account to login.
 
 ## Issue Reporting
 
@@ -52,4 +80,4 @@ If you have found a bug or if you have a feature request, please report them at 
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+This project is licensed under the MIT license. See the [LICENSE](../LICENSE) file for more info.
