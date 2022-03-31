@@ -46,7 +46,7 @@ export class ExternalApiComponent implements OnInit {
   orderPizza(number) {
     const order = { type: 'pizza', quantity: this.orderQuantity, created: new Date() }
 
-    this.api.order$(this.user.sub, this.user.metadata.orders).subscribe({
+    this.api.order$(this.user.sub, order).subscribe({
       next: (orderRes) => {
         this.hasApiError = false;
         // this.responseJson = JSON.stringify(ordersRes, null, 2).trim();
