@@ -1,5 +1,3 @@
-import config from '../../auth_config.json';
-
 const { domain, clientId, audience, apiUri, errorPath } = {
   domain: 'dev-49fsv0cc.us.auth0.com',
   clientId: '8p2suau1b9uiqioSQ0tejKtnPb1vz5F7',
@@ -17,6 +15,7 @@ export const environment = {
     redirectUri: window.location.origin,
     errorPath,
   },
+  apiUri: apiUri,
   httpInterceptor: {
     allowedList: [`${apiUri}/*`],
   },
