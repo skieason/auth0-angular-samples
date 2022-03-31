@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run prod",
-    "build": "ng build --prod",
+    "build": "ng build --prod --base-href https://phil-pizza-42.herokuapp.com/",
     "test": "ng test",
     "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
