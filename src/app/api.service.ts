@@ -11,10 +11,10 @@ export class ApiService {
 
   ping$(): Observable<any> {
     console.log(config.apiUri);
-    return this.http.get(`${config.apiUri}/api/external`);
+    return this.http.get(`${config.apiUri}api/external`);
   }
 
   order$(sub, orders): Observable<any> {
-    return this.http.post(`${config.apiUri}/api/${sub}/order`, orders)
+    return this.http.post(`${config.apiUri}api/${sub}/order`, orders)
   }
 }
