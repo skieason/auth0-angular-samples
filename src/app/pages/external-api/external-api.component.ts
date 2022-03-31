@@ -45,20 +45,20 @@ export class ExternalApiComponent implements OnInit {
 
   orderPizza(number) {
     const order = { type: 'pizza', quantity: this.orderQuantity, created: new Date() }
-    this.user.metadata.orders.unshift(order);
 
     this.api.order$(this.user.sub, this.user.metadata.orders).subscribe({
-      next: (ordersRes) => {
+      next: (orderRes) => {
         this.hasApiError = false;
         // this.responseJson = JSON.stringify(ordersRes, null, 2).trim();
+        this.user.metadata.orders.unshift(orderRes);
     
-        // this.http.patch(
-        //   encodeURI(`https://dev-49fsv0cc.us.auth0.com/api/v2/users/${this.user.sub}`), 
-        //   { user_metadata: this.user.metadata }
-        // ).subscribe(response => {
-        //   console.log('the response: ', response)
-        //   this.orderQuantity = 1;
-        // })
+        this.http.patch(
+          encodeURI(`https://dev-49fsv0cc.us.auth0.com/api/v2/users/${this.user.sub}`), 
+          { user_metadata: this.user.metadata }
+        ).subscribe(response => {
+          console.log('the response: ', response)
+          this.orderQuantity = 1;
+        })
       },
       error: () => this.hasApiError = true,
     });
