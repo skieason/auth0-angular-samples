@@ -27,7 +27,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(
   cors({
-    origin: authConfig.appUri,
+    origin: 'https://phil-pizza-42.herokuapp.com/',
   })
 );
 app.use(express.json());

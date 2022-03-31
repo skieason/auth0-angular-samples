@@ -4,11 +4,11 @@
 import config from '../../auth_config.json';
 
 const { domain, clientId, audience, apiUri, errorPath } = config as {
-  domain: string;
-  clientId: string;
-  audience?: string;
-  apiUri: string;
-  errorPath: string;
+  domain: 'dev-49fsv0cc.us.auth0.com',
+  clientId: '8p2suau1b9uiqioSQ0tejKtnPb1vz5F7',
+  audience: 'https://dev-49fsv0cc.us.auth0.com/api/v2/',
+  apiUri: 'https://localhost:3001/',
+  errorPath: '/error'
 };
 
 export const environment = {
