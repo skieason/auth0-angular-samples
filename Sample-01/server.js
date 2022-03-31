@@ -6,7 +6,7 @@ const authConfig = require('./auth_config.json');
 
 const app = express();
 
-const port = process.env.SERVER_PORT || 4200;
+const port = process.env.SERVER_PORT || 8080;
 
 app.use(morgan('dev'));
 
@@ -29,6 +29,11 @@ app.use(
   })
 );
 
-app.use(express.static(join(__dirname, 'dist')));
+app.use(express.static(join(__dirname, 'dist/login-demo')));
+
+app.get('/', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/login-demo/'}),
+);
+
 
 app.listen(port, () => console.log(`App server listening on port ${port}`));

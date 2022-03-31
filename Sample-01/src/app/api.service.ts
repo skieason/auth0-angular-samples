@@ -13,4 +13,8 @@ export class ApiService {
     console.log(config.apiUri);
     return this.http.get(`${config.apiUri}/api/external`);
   }
+
+  order$(sub, orders): Observable<any> {
+    return this.http.post(`${config.apiUri}/api/${sub}/order`, orders)
+  }
 }

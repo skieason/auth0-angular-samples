@@ -1,4 +1,27 @@
 <div class="container mt-5">
+  <h1>Order a Pizza</h1>
+  <br>
+  <div *ngIf="auth.user$ | async as user">
+    <span>
+      <input style="width: 100px; border: 1px solid lightgrey; border-radius: 6px; text-align: center; margin-right: 15px;" type="number" [(ngModel)]="orderQuantity">
+      <button style="margin-right: 5px;" (click)="orderPizza(1)" [disabled]="!user.email_verified || orderQuantity < 1" style="border: 1px solid lightgrey; padding: 5px 15px; background: white; border-radius: 5px;">Order {{orderQuantity}} Pizza(s)</button>
+      <!-- <button style="margin-right: 5px;" (click)="orderPizza(1)" [disabled]="!user.email_verified" style="border: 1px solid lightgrey; padding: 5px 15px; background: white; border-radius: 5px;">Order 1 Pizza</button> -->
+    </span>
+    <p *ngIf="!user.email_verified" style="color: red; font-size: .8em;">Please validate your email to place an order</p>
+    <br>
+    <br>
+    <div *ngIf="orderResponseJson">
+      {{ orderResponseJson }}
+    </div>
+    <div>Previous Orders <span *ngIf="user.metadata.orders.length">({{ user.metadata.orders.length }})</span>:</div>
+    <br>
+    <!-- <div>{{ user.metadata.orders | json }}</div> -->
+    <ul *ngFor="let order of user.metadata.orders">
+      <li sytle="width: 500px; display:flex; justify-content: space-between;">{{ order.quantity }} {{ order.type }}(s) at {{ order.created | date: 'h:mm a on MMM d, y'}}</li>
+    </ul>
+  </div>
+  <!-- <br>
+  <br>
   <h1>External API</h1>
   
   <div *ngIf="hasApiError" class="alert alert-danger" role="alert">
@@ -73,5 +96,5 @@
         <code class="js rounded" [highlight]="responseJson"></code>
       </pre>
     </div>
-  </div>
+  </div> -->
 </div>

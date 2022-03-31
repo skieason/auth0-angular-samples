@@ -13,7 +13,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'external-api',
+    path: 'order-pizza',
     component: ExternalApiComponent,
     canActivate: [AuthGuard],
   },

@@ -19,6 +19,7 @@ import { ExternalApiComponent } from './pages/external-api/external-api.componen
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,12 +40,34 @@ import { environment as env } from '../environments/environment';
     HttpClientModule,
     NgbModule,
     HighlightModule,
+    FormsModule,
     FontAwesomeModule,
     AuthModule.forRoot({
       ...env.auth,
+      domain: 'dev-49fsv0cc.us.auth0.com',
+      clientId: '8p2suau1b9uiqioSQ0tejKtnPb1vz5F7',
+
+      // Request this audience at user authentication time
+      audience: 'https://dev-49fsv0cc.us.auth0.com/api/v2/',
+
+      // Request this scope at user authentication time
+      scope: 'read:current_user update:current_user_metadata',
+
       httpInterceptor: {
-        ...env.httpInterceptor,
-      },
+        allowedList: [
+          {
+            // Match any request that starts 'https://dev-49fsv0cc.us.auth0.com/api/v2/' (note the asterisk)
+            uri: '*',
+            tokenOptions: {
+              // The attached token should target this audience
+              audience: 'https://dev-49fsv0cc.us.auth0.com/api/v2/',
+              
+              // The attached token should have these scopes
+              scope: 'read:current_user update:current_user_metadata'
+            }
+          }
+        ]
+      }
     }),
   ],
   providers: [
