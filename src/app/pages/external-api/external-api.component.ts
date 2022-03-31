@@ -43,7 +43,7 @@ export class ExternalApiComponent implements OnInit {
     });
   }
 
-  orderPizza(number) {
+  orderPizza() {
     const order = { type: 'pizza', quantity: this.orderQuantity, created: new Date() }
 
     this.api.order$(this.user.sub, order).subscribe({
